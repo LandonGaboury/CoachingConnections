@@ -53,7 +53,7 @@ function Feed() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/posts")
+    fetch(`${process.env.REACT_APP_API_URL}/posts`)
       .then((res) => res.json())
       .then(setPosts);
   }, []);
@@ -76,7 +76,7 @@ function Profile() {
   const [profile, setProfile] = useState({});
 
   const updateProfile = () => {
-    fetch("http://localhost:5000/profile", {
+    fetch(`${process.env.REACT_APP_API_URL}/profile`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(profile),
@@ -99,7 +99,7 @@ function Connections() {
   const [connections, setConnections] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/connections")
+    fetch(`${process.env.REACT_APP_API_URL}/connections`)
       .then((res) => res.json())
       .then(setConnections);
   }, []);
@@ -120,13 +120,13 @@ function Jobs() {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/jobs")
+    fetch(`${process.env.REACT_APP_API_URL}/jobs`)
       .then((res) => res.json())
       .then(setJobs);
   }, []);
 
   const apply = (id) => {
-    fetch(`http://localhost:5000/apply/${id}`, { method: "POST" });
+    fetch(`${process.env.REACT_APP_API_URL}/apply/${id}`, { method: "POST" });
   };
 
   return (
